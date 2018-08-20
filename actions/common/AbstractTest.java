@@ -1,4 +1,4 @@
-package actions;
+package common;
 
 import org.junit.BeforeClass;
 import org.openqa.selenium.WebDriver;
