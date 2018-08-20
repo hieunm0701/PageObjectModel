@@ -1,6 +1,6 @@
 package pages;
 
-import actions.AbstractPage;
+import common.AbstractPage;
 
 public class HomePage extends AbstractPage {
 
