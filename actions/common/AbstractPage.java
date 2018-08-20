@@ -1,9 +1,11 @@
 package common;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
 
 public class AbstractPage {
 	WebDriver driver;
@@ -66,6 +68,12 @@ public class AbstractPage {
 		driver.navigate().refresh();
 	}
 
+	/**
+	 * Get the web element of page from By
+	 * @param by
+	 * @return
+	 * 		Web Element
+	 */
 	public WebElement getWebElement(By by) {
 		try {
 			return driver.findElement(by);
@@ -74,16 +82,38 @@ public class AbstractPage {
 		}
 	}
 
+	/**
+	 * Click to target Web Element
+	 * @param by
+	 * 		By of Web Element
+	 */
 	public void clickToElement(By by) {
 		getWebElement(by).click();
 	}
 
-	public void sendkeyToElement() {
-
+	/**
+	 * Send string into element 
+	 * @param by
+	 * 		By of Web Element
+	 * @param key
+	 * 		String of key to send
+	 */
+	public void sendkeyToElement(By by, String key) {
+		getWebElement(by).sendKeys(key);
 	}
-
-	public void selectItemInDropdownList() {
-
+	/**
+	 * Send string into element 
+	 * @param by
+	 * 		By of Web Element
+	 * @param key
+	 * 		Key to send
+	 */
+	public void sendkeyToElement(By by, Keys key) {
+		getWebElement(by).sendKeys(key);
+	}
+	public void selectItemInDropdownListByText(By by, String value) {
+		Select select = new Select(getWebElement(by));
+		select.selectByVisibleText(value);
 	}
 
 	public void getFirstItemSelected() {
